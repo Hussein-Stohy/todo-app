@@ -1,27 +1,107 @@
-# ToDo
+# Todo App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+A simple and elegant Todo application built with Angular 18.
 
-## Development server
+## 🚀 Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- ✅ Add new tasks
+- ✏️ Edit existing tasks
+- 🗑️ Delete tasks
+- ✔️ Mark tasks as complete
+- 📱 Responsive design
 
-## Code scaffolding
+## 🛠️ Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 18** - Frontend framework
+- **TypeScript** - Programming language
+- **CSS3** - Styling
+- **HTML5** - Markup
 
-## Build
+## 📋 Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Before running this project, make sure you have the following installed:
 
-## Running unit tests
+- [Node.js](https://nodejs.org/) (version 18 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Angular CLI](https://angular.io/cli) (install globally with `npm install -g @angular/cli`)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🔧 Installation
 
-## Running end-to-end tests
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Hussein-Stohy/todo-app.git
+   cd todo-app
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Further help
+## 🏃‍♂️ Running the Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Development Server
+```bash
+npm start
+```
+Navigate to `http://localhost:4200/` in your browser. The application will automatically reload when you make changes to the source files.
+
+### Build for Production
+```bash
+npm run build
+```
+The build artifacts will be stored in the `dist/` directory.
+
+### Running Tests
+```bash
+npm test
+```
+
+### Build and Watch (Development)
+```bash
+npm run watch
+```
+
+## 📁 Project Structure
+
+```
+todo-app/
+├── src/
+│   ├── app/
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   ├── app.component.css
+│   │   └── ...
+│   ├── assets/
+│   ├── index.html
+│   └── main.ts
+├── public/
+├── package.json
+└── README.md
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Hussein Stohy**
+- GitHub: [@Hussein-Stohy](https://github.com/Hussein-Stohy)
+
+## 🙏 Acknowledgments
+
+- Angular team for the amazing framework
+- Community contributors and developers
+
+---
+
+⭐ If you found this project helpful, please give it a star on GitHub!

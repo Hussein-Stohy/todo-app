@@ -1,0 +1,531 @@
+/* Modern To-Do App Component Styles */
+
+:host {
+  display: block;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: calc(100vh - 40px);
+}
+
+/* ========================
+   Header Section
+   ======================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 8px;
+  gap: 20px;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.025em;
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 8px;
+}
+
+.task-counter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.counter-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 6px;
+  background: var(--card-border);
+  border-radius: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), #8b5cf6);
+  border-radius: 100vh;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.theme-switcher {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--card-border);
+  background: var(--card-background);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.theme-switcher::before {
+  content: var(--moon-icon);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.theme-switcher.dark-mode::before {
+  content: var(--sun-icon);
+  transform: translateY(0) rotate(180deg);
+}
+
+.theme-switcher:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.theme-switcher:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* ========================
+   Add Task Section
+   ======================== */
+.add-task-container {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  background: var(--card-background);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.add-task-container:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-lg), 0 0 0 3px var(--primary-color-focus);
+  transform: translateY(-2px);
+}
+
+.task-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.task-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.task-input:focus {
+  outline: none;
+  background: var(--primary-color-light);
+}
+
+.add-task-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.add-task-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.add-task-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.add-task-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.add-task-btn:active {
+  transform: translateY(-1px) scale(0.95);
+  animation: bounce 0.3s ease;
+}
+
+.add-task-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.add-task-btn:disabled:hover {
+  transform: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+}
+
+/* ========================
+   Tasks List
+   ======================== */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-right: -8px;
+}
+
+.task-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color-light);
+}
+
+.task-card.completed {
+  background: var(--completed-background);
+  border-color: transparent;
+  opacity: 0.8;
+}
+
+.task-card.completed:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ========================
+   Task Details
+   ======================== */
+.task-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 1.5;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.task-card.completed .task-title {
+  text-decoration: line-through;
+  color: var(--completed-color);
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--completed-color);
+}
+
+/* ========================
+   Custom Checkbox
+   ======================== */
+.checkbox-container {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container:hover .checkmark {
+  background: var(--primary-color-light);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--primary-color-focus);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1);
+  animation: bounce 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  top: 2px;
+  left: 7px;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ========================
+   Delete Button
+   ======================== */
+.delete-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  color: var(--completed-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.task-card:hover .delete-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.delete-btn:hover {
+  background: var(--delete-color);
+  color: white;
+  border-color: var(--delete-color);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.delete-btn:active {
+  transform: scale(0.9);
+}
+
+/* ========================
+   Empty State
+   ======================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ========================
+   Responsive Design
+   ======================== */
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+    gap: 24px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .theme-switcher {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  
+  .add-task-container {
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .task-input {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+  
+  .add-task-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+  
+  .task-card {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+  
+  .task-title {
+    font-size: 1rem;
+  }
+  
+  .tasks-list {
+    max-height: 65vh;
+    gap: 12px;
+  }
+  
+  .empty-state {
+    padding: 40px 16px;
+  }
+  
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    max-width: 100%;
+  }
+  
+  .container {
+    padding: 12px;
+    gap: 20px;
+  }
+  
+  .header {
+    padding: 12px 0;
+  }
+  
+  .header h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ========================
+   Performance Optimizations
+   ======================== */
+.task-card {
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.add-task-btn,
+.theme-switcher,
+.delete-btn {
+  contain: layout style paint;
+  will-change: transform;
+}
+
+/* Remove will-change after animations */
+.task-card:not(:hover) {
+  will-change: auto;
+}
+
+.add-task-btn:not(:hover),
+.theme-switcher:not(:hover),
+.delete-btn:not(:hover) {
+  will-change: auto;
+}
